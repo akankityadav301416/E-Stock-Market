@@ -1,0 +1,642 @@
+<header>
+  <nav id="header-nav" class="navbar navbar-expand-md navbar-light">
+    <div class="container-fluid">
+      <div class="navbar-brand">
+        <h1>E-STOCK MARKET</h1>
+      </div>
+    </div>
+  </nav>
+</header>
+<div
+  class="row"
+  style="
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-color: rgb(209, 206, 206);
+    margin-top: 10px;
+  "
+>
+  <form
+    [formGroup]="stockAdd"
+    (ngSubmit)="onStockAdd()"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 10px;
+      background-color: #516df7;
+      background-position: right bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Add Stock</label
+    >
+    <div class="row" style="display: flex; gap: 30px">
+      <div>
+        <label style="margin-right: 10px" for="c_code">Company Code:</label>
+        <input
+          type="number"
+          id="c_code"
+          name="company code"
+          placeholder="Company Code"
+          formControlName="companyCode"
+        />
+      </div>
+    </div>
+    <div class="row" style="display: flex; gap: 30px">
+      <div>
+        <label style="margin-right: 10px" for="s_price">Stock Price:</label>
+        <input
+          type="number"
+          id="s_price"
+          name="stock price"
+          placeholder="Stock Price"
+          formControlName="stockPrice"
+        />
+      </div>
+    </div>
+    <div>
+      <button class="button" type="submit">Add</button>
+    </div>
+  </form>
+  <form
+    [formGroup]="companyAdd"
+    (ngSubmit)="onCompanyAdd()"
+    class="row col-8"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex: 2;
+      padding: 10px;
+      padding-left: 30px;
+      background-position: left bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <!--  -->
+
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Add Company</label
+    >
+    <div class="row">
+      <label style="margin-right: 10px" for="c_code">Company Code</label>
+      <input
+        type="number"
+        id="c_code"
+        name="company code"
+        placeholder="Company Code"
+        formControlName="companyCode"
+      />
+      <label style="margin-right: 10px; margin-left: 10px" for="c_name"
+        >Company Name</label
+      >
+      <input
+        type="text"
+        id="c_name"
+        name="company name"
+        placeholder="Company Name"
+        formControlName="companyName"
+      />
+    </div>
+    <div class="row">
+      <label style="margin-right: 10px" for="c_ceo">Company CEO</label>
+      <input
+        type="text"
+        id="c_ceo"
+        name="company ceo"
+        placeholder="Company CEO"
+        formControlName="companyCEO"
+      />
+      <label style="margin-right: 10px; margin-left: 10px" for="c_turnover"
+        >Company Turnover</label
+      >
+      <input
+        type="number"
+        id="c_turnover"
+        name="company turnover"
+        placeholder="Company Turnover"
+        formControlName="companyTurnover"
+      />
+    </div>
+    <div class="row">
+      <label style="margin-right: 10px" for="c_website">Company Website</label>
+      <input
+        type="text"
+        id="c_website"
+        name="company website"
+        placeholder="Company Website"
+        formControlName="companyWebsite"
+      />
+      <label style="margin-right: 10px; margin-left: 10px" for="c_stock"
+        >Stock Exchange</label
+      >
+      <input
+        type="text"
+        id="c_stock"
+        name="stock exchange"
+        placeholder="Stock Exchange"
+        formControlName="stockExchange"
+      />
+    </div>
+    <div class="row">
+      <button class="button" type="submit">Add</button>
+    </div>
+    <!--  -->
+  </form>
+</div>
+
+<div
+  class="row"
+  style="
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(209, 206, 206);
+    margin-top: 10px;
+  "
+>
+  <form
+    [formGroup]="companySearch"
+    (ngSubmit)="onCompanySearch()"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 10px;
+      background-color: #516df7;
+      background-position: right bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Search Company</label
+    >
+    <div class="row">
+      <label style="margin-right: 10px" for="c_code">Find Company</label>
+      <input
+        type="number"
+        id="c_code"
+        name="company code"
+        placeholder="Company Code"
+        formControlName="code"
+      />
+    </div>
+    <div class="row">
+      <button class="button" type="submit">Search</button>
+    </div>
+  </form>
+  <form
+    [formGroup]="companyStockSearch"
+    (ngSubmit)="onStockSearch()"
+    class="row col-8"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex: 2;
+      padding: 10px;
+      padding-left: 30px;
+      background-color: rgb(209, 206, 206);
+      background-position: left bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Search Stock</label
+    >
+    <div class="row" style="display: flex; gap: 30px">
+      <div>
+        <label style="margin-right: 10px" for="c_code">Company Code:</label>
+        <input
+          type="number"
+          id="c_code"
+          name="company code"
+          placeholder="Company Code"
+          formControlName="code"
+        />
+      </div>
+    </div>
+    <div class="row" style="display: inherit">
+      <label style="margin-right: 10px" for="start_date">From:</label>
+      <input
+        style="margin-right: 10px"
+        type="date"
+        id="start_date"
+        name="startDate"
+        formControlName="from_date"
+      />
+      <label style="margin-right: 10px" for="end_date">To:</label>
+      <input
+        type="date"
+        id="end_date"
+        name="endDate"
+        formControlName="to_date"
+      />
+    </div>
+    <div>
+      <button class="button" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div
+  class="row"
+  style="
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(209, 206, 206);
+    margin-top: 10px;
+  "
+>
+  <form
+    (ngSubmit)="fetchCompanyDetails()"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 10px;
+      background-color: #516df7;
+      background-position: right bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Fetch All Company Details</label
+    >
+    <div>
+      <button class="button" type="submit">Fetch All Company Details</button>
+    </div>
+  </form>
+  <form
+    [formGroup]="companyDelete"
+    (ngSubmit)="onCompanyDelete()"
+    class="row col-8"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex: 2;
+      padding: 10px;
+      padding-left: 30px;
+      background-color: rgb(209, 206, 206);
+      background-position: left bottom;
+      background-repeat: repeat-y;
+      background-size: 10px 10px;
+    "
+  >
+    <label
+      style="text-align: center; font-size: 18px; text-decoration: underline"
+      >Delete Company</label
+    >
+    <div class="row">
+      <label style="margin-right: 10px" for="c_code">Company Code</label>
+      <input
+        type="number"
+        id="c_code"
+        name="company code"
+        placeholder="Company Code"
+        formControlName="code"
+      />
+    </div>
+    <div class="row">
+      <button class="button" type="submit">Submit</button>
+    </div>
+    <!--  -->
+  </form>
+</div>
+
+<div *ngIf="orgSummary$ | async as orgSummary">
+  <div *ngIf="orgSummary.length > 0">
+    <h4 style="align-items: center">All Companies</h4>
+    <div
+      style="
+        display: flex;
+        gap: 2px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 2px;
+      "
+    >
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_code">Comapny Code </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_name">Comapny Name </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_ceo">Comapny CEO </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_website">Comapny Website </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_turnover">Comapny Turnover </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 0px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_stock"> Stock Exchange</span>
+      </p>
+    </div>
+    <div
+      *ngFor="let org of orgSummary"
+      style="
+        display: flex;
+        gap: 2px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 2px;
+      "
+    >
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_code">{{ org.companyCode }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_name">{{ org.companyName }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_ceo">{{ org.companyCEO }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_website"
+          >{{ org.companyWebsite }}
+        </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_turnover">{{ org.companyTurnover }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_stock"> {{ org.stockExchange }}</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentOrg$ | async as currentOrg">
+  <div *ngIf="currentOrg.length > 0">
+    <h4>All Stocks for Given Company</h4>
+    <div
+      style="
+        display: flex;
+        gap: 2px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 2px;
+      "
+    >
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_code">Stock Price </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_name">Date </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(209, 206, 206);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_ceo">Time </span>
+      </p>
+    </div>
+    <div
+      *ngFor="let stock of currentOrg"
+      style="
+        display: flex;
+        gap: 2px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 2px;
+      "
+    >
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span class="c_code">{{ stock.stockPrice }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_name">{{ stock.date }} </span>
+      </p>
+      <p
+        style="
+          background-color: rgb(156, 194, 139);
+          border-radius: 5px;
+          flex: 1;
+          justify-content: center;
+          padding: 5px;
+          margin: 0px;
+        "
+      >
+        <span style="flex-grow: 1" class="c_ceo">{{ stock.time }} </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="helpdiv" *ngIf="companyAdded == true">
+  <i>
+    <h4 style="color: darkgreen">Comapny Added !</h4>
+  </i>
+</div>
+
+<div id="helpdiv" *ngIf="stockAdded == true">
+  <i>
+    <h4 style="color: darkgreen">Stock Added !</h4>
+  </i>
+</div>
+
+<div id="helpdiv" *ngIf="companyDeleted == true">
+  <i>
+    <h4 style="color: darkgreen">Company Deleted !</h4>
+  </i>
+</div>
+
+<div
+  id="helpdiv"
+  *ngIf="(!orgSummary$ | async) || (orgSummary$ | async)?.length === 0"
+>
+  <i>
+    <h4 style="color: crimson">No company found !</h4>
+  </i>
+</div>
